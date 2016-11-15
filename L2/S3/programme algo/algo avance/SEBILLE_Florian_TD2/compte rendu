@@ -1,0 +1,24 @@
+exercice 1
+
+- j'ai recopier le programme somme pour pouvoir tester le debeugeur
+
+- j'ai taper les commande suivante :
+gcc -g somme.c -o exe
+gdb exe
+run 
+
+- tout se passait correctement
+
+- ensuite j'ai mit en commentaire la ligne 10 pour pouvoir tester une erreur avec le debeugeur
+
+- j'ai taper les commande suivante :
+quit //pour sortir du debeugeur
+gcc -g somme.c -o exe
+gdb exe
+run
+
+- j'ai pu constater que le programme renvoier bien 0 donc qu'il y avait une erreur
+
+
+
+

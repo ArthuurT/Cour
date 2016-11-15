@@ -1,0 +1,16 @@
+1 = fic1.
+2 = fic2.
+3 = fic3.
+opt = -g -Wextra
+
+executable : ${3}o ${1}o ${2}o
+	gcc -o exe ${3}o ${1}o ${2}o -lm
+			
+${3}o : ${3}c
+	gcc -c ${3}c ${opt}
+			
+${1}o : ${1}c
+	gcc -c ${1}c ${opt}
+			
+${2}o : ${2}c
+	gcc -c ${2}c ${opt}

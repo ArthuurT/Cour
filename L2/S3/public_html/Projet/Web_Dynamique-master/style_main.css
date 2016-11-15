@@ -1,0 +1,234 @@
+/*                            ==============
+                              =page globale=
+                              ==============
+*/
+
+html {
+	height: 100%;
+	background-color: #77CCEE;
+	width:1300px;
+	margin:auto;
+}
+body
+{
+	min-height: 100%;
+	position: relative;
+  	padding:0px;
+
+}
+
+/*                            ==============
+                              =   Header   =
+                              ==============
+*/
+
+div.entete
+{
+	width:100%;
+	padding-top: 2%;
+	color: white;
+}
+div.slogan
+{
+	position:relative;
+	float: left;
+    width:50%;
+    text-align: right;
+    right: 10%;
+
+}
+
+div.conecter
+{
+	position: relative;
+	float: right;
+    width:50%;
+    text-align: left;
+    left: 23.5%;
+}
+
+#logo
+{
+	position: absolute;
+	height: 115px;
+	width: 200px;
+	padding-left:10px;
+	top: 50px;
+	left:200px;
+	background-image: url("Images/logo_blue.svg");
+	background-repeat: no-repeat;
+}
+
+#connec
+{
+	position: absolute;
+	height: 40px;
+	width: 150px;
+	padding-left:10px;
+	top: 10px;
+	right: 20px;
+	background-image: url("Images/user.svg");
+	background-repeat: no-repeat;
+}
+
+#panier
+{
+	position: absolute;
+	height: 40px;
+	width: 150px;
+	padding-left:10px;
+	top: 155px;
+	right: 20px;
+	background-image: url("Images/basket.svg");
+	background-repeat: no-repeat;
+}
+
+nav
+{
+	vertical-align: center;
+	margin-left: 30%;
+	text-align: left;
+	font-size: 25px;
+	font-style:italic;
+	font-family: Arial;
+	color: white;
+	margin-bottom: 3%;
+}
+
+li.menu
+{
+	display:inline;
+	padding-left: 2%;
+}
+
+a.lien_menu
+{
+	color: white;
+	text-decoration: none;
+}
+
+.separateur
+{
+color:white;
+font-size:100px;
+display: inline;
+position:relative;
+left:20px;
+top: 20px;
+}
+
+
+header
+{
+	border-radius: 5px;
+	background-color: #293133;
+	text-align: center;
+	margin-bottom: 2%;
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-bottom: 10px;
+}
+
+/*                            ==================
+                              =coprs de la page=
+                              ==================
+*/
+
+section
+{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.intro
+{
+	border-radius: 5px;
+	color:white;
+	font-size: 15px;
+	border: 1px solid black;
+	font-family: Arial;
+	margin-bottom: 10px;
+	text-align: center;
+	background-color: #293133;
+}
+
+.fond
+{
+	font-size: 15px;
+	font-family: georgia;
+}
+
+tr.entete
+{
+	text-align: center;
+	font-size: 20px;
+	font-family: New York;
+	color: #77CCEE;
+	font-weight: bold;
+	background-color: #293133;
+
+}
+tr.zone
+{
+	background-color: #293133;
+	text-align: justify;
+	color:white;
+}
+td
+{
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px black;
+	border-collapse: collapse;
+	padding-left: 100px;
+	padding-right: 110px;
+	text-align: center;
+
+}
+
+
+
+/*                            ==============
+                              =   Footer   =
+                              ==============
+*/
+
+footer
+{
+	border-radius: 5px;
+	position: absolute;
+	width: 80%;
+	height: 8%;
+	display: table-row;
+	text-align: center;
+	margin-top: 2%;
+	margin-left: 10%;
+	color: white;
+	background-color: #293133;
+
+}
+li.menu_logo_gauche
+{
+	display:inline;
+	padding-right:1%;
+}
+li.menu_logo_droit
+{
+	display:inline;
+	padding-left:1%;
+}
+
+li.menu_footer
+{
+	display:inline;
+	margin-right: 0%;
+	margin-left: 0%;
+	padding: 0.4%;
+
+}
+
+a.lien_footer
+{
+	color: #77CCEE;
+	text-decoration: none;
+}

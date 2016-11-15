@@ -1,0 +1,8 @@
+executable : exo_4.o fonction.o
+	gcc -o exe exo_4.o fonction.o
+			
+exo_4.o : exo_4.c
+	gcc -c exo_4.c -g -Wextra
+			
+fonction.o : fonction.c
+	gcc -c fonction.c -g -Wextra

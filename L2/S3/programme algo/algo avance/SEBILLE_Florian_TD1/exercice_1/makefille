@@ -1,0 +1,11 @@
+executable : fic3.o fic1.o fic2.o
+	gcc -o exe fic3.o fic1.o fic2.o -lm
+			
+fic3.o : fic3.c
+	gcc -c fic3.c -g -Wextra
+			
+fic1.o : fic1.c
+	gcc -c fic1.c -g -Wextra
+			
+fic2.o : fic2.c
+	gcc -c fic2.c -g -Wextra

@@ -1,0 +1,109 @@
+		TP1 Bases de Donnees
+
+
+psql -d pour mettre le nom de la base
+psql -U pour mettre un nom d'utilisateur different
+
+
+dans la base :
+
+\dt		Afficher la liste des tables de la base de données (bdd)
+\dt+		Afficher la liste des tables de la bdd avec plus d’informations 
+\d nom_table	Afficher la description d’une table
+\h select	Afficher l’aide sur la commande SQL SELECT
+\i nom_fic	Exécution des commandes SQL qui se trouvent dans lefichier texte
+\? liste toute les commande \
+ex : \c pour aller a une autre base de donné sans quitter l'environement; 
+
+
+commandes :
+
+ssh info
+psql -l -> mot de passe SeFl
+
+
+1- il y a 13 bases de données
+
+psql -d booktown -> mot de passe SeFl
+\dt
+
+2- il y a 18 table ou relations
+
+3- \h
+4- \h CREATE USER
+5-
+6- \c etu_employes
+
+Bases de donnnées employés:
+
+CREATE TABLE emp (
+idEmp int,
+nEmp varchar,
+metier varchar,
+idMgr int,
+dateEmb date,
+sal float,
+comm int,
+idDep int,
+PRIMARY KEY (idEmp),
+FOREIGN KEY (idDep) REFERENCES dep (idDep)
+);
+
+CREATE TABLE dep (
+idDep int,
+nDep varchar,
+loc varchar,
+PRIMARY KEY (idDep)
+);
+
+CREATE TABLE grille (
+grade int,
+sal_min int,
+sal_max int,
+PRIMARY KEY (grade)
+);
+
+- afficher une table -> SELECT * FROM emp;
+
+a- SELECT * FROM emp WHERE metier IN ('CLERK','SALESMAN','ANALYST');
+
+b- SELECT DISTINCT metier FROM emp;
+
+c- SELECT nemp FROM emp WHERE nemp LIKE '%A%';
+
+d- SELECT nemp FROM emp WHERE nemp LIKE '_A%';
+
+e- SELECT nemp FROM emp WHERE sal > 1100;
+
+f- SELECT AVG (sal) FROM emp WHERE metier = 'CLERK'; ->1044.0025
+
+g- SELECT * FROM emp WHERE comm IS NULL;
+
+h- SELECT nemp FROM emp WHERE idmgr = 7698 OR metier = 'SALESMAN';
+ou SELECT nemp FROM emp WHERE idmgr = 7698 UNION SELECT nemp FROM emp WHERE metier = 'SALESMAN';
+
+i- SELECT nemp FROM emp WHERE idmgr = 7698 AND metier = 'SALESMAN';
+ou SELECT nemp FROM emp WHERE idmgr = 7698 INTERSECT SELECT nemp FROM emp WHERE metier = 'SALESMAN';
+
+j- SELECT nemp FROM emp WHERE metier != 'SALESMAN';
+ou SELECT nemp FROM emp WHERE metier <> 'SALESMAN';
+
+k- SELECT * FROM emp WHERE metier = 'SALESMAN' AND (comm IS NULL OR comm = 0);
+
+l-SELECT * FROM emp WHERE metier = 'MANAGER' OR ( metier = 'CLERK'AND iddep = 10 );
+
+ALTER TABLE dep ADD COLUMN DIRECTEUR VARCHAR;
+
+UPDATE dep SET directeur = 'King' WHERE iddep = 10;
+UPDATE dep SET directeur = 'Ford' WHERE iddep = 20;
+UPDATE dep SET directeur = 'Blake' WHERE iddep = 30;
+UPDATE dep SET directeur = 'King' WHERE iddep = 40;
+
+SELECT idEmp,nEmp,idDep FROM emp WHERE metier = 'MANAGER';
+
+SELECT metier FROM (SELECT idmgr,iddep FROM emp INTERSECT SELECT idemp,iddep,metier FROM emp;
+
+
+
+
+ 
