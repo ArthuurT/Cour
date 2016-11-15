@@ -1,0 +1,25 @@
+		TP1 Bases de Donnees
+
+
+psql -d pour mettre le nom de la base
+psql -U pour mettre un nom d'utilisateur different
+
+
+dans la base :
+
+\dt		Afficher la liste des tables de la base de données (bdd)
+\dt+		Afficher la liste des tables de la bdd avec plus d’informations
+\d nom_table	Afficher la description d’une table
+\h select	Afficher l’aide sur la commande SQL SELECT
+\i nom_fic	Exécution des commandes SQL qui se trouvent dans lefichier texte
+\? liste toute les commande \
+ex : \c pour aller a une autre base de donné sans quitter l'environement;
+
+
+commandes :
+
+ssh info
+psql -l -> mot de passe SeFl
+
+
+1-
