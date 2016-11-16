@@ -1,4 +1,4 @@
-		TP1 Bases de Donnees
+cd ..		TP1 Bases de Donnees
 
 
 psql -d pour mettre le nom de la base
