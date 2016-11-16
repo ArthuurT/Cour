@@ -14,5 +14,8 @@ pour apliquer les modif d'une branche vers la branche master:
 git checkout master
 git merge nom_de_la_branche
 
-pour suprimer une branche:
+pour suprimer une branche :
 git branch -d nom_de_la_branche
+
+apres la forcer a poucher avec :
+git push origin --delete nom_de_la_branche
