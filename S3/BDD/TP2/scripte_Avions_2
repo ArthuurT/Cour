@@ -1,0 +1,44 @@
+INSERT INTO licence_pilote VALUES (10, 'BO');
+INSERT INTO licence_pilote VALUES (11, 'AA');
+INSERT INTO licence_pilote VALUES (12, 'BO');
+INSERT INTO licence_pilote VALUES (13, 'AB');
+INSERT INTO licence_pilote VALUES (13, 'AT');
+INSERT INTO licence_pilote VALUES (14, 'AT');
+INSERT INTO licence_pilote VALUES (15, 'AT');
+INSERT INTO licence_pilote VALUES (15, 'BO');
+INSERT INTO licence_pilote VALUES (16, 'AA');
+INSERT INTO licence_pilote VALUES (16, 'BT');
+INSERT INTO licence_pilote VALUES (17, 'AA');
+INSERT INTO licence_pilote VALUES (18, 'BO');
+
+
+INSERT INTO licence_type VALUES ('AA', 1);
+INSERT INTO licence_type VALUES ('AA', 2);
+INSERT INTO licence_type VALUES ('AA', 3);
+INSERT INTO licence_type VALUES ('AA', 4);
+INSERT INTO licence_type VALUES ('BO', 5);
+INSERT INTO licence_type VALUES ('AT', 6);
+INSERT INTO licence_type VALUES ('AT', 7);
+INSERT INTO licence_type VALUES ('AB', 1);
+INSERT INTO licence_type VALUES ('AB', 2);
+INSERT INTO licence_type VALUES ('AB', 3);
+INSERT INTO licence_type VALUES ('AB', 4);
+INSERT INTO licence_type VALUES ('AB', 5);
+
+
+INSERT INTO type VALUES (1, 'A300', 300);
+INSERT INTO type VALUES (2, 'A310', 310);
+INSERT INTO type VALUES (3, 'A320', 320);
+INSERT INTO type VALUES (4, 'A330', 330);
+INSERT INTO type VALUES (5, 'B747', 248);
+INSERT INTO type VALUES (6, 'ATR44', 144);
+INSERT INTO type VALUES (7, 'Foker100', 100);
+
+INSERT INTO aeroport VALUES (1 ,'Avignon', 'Avignon');
+INSERT INTO aeroport VALUES (2 ,'Bordeaux', 'Bordeaux);
+INSERT INTO aeroport VALUES (3 ,'Marseille Marignane','Marseille);
+INSERT INTO aeroport VALUES (4 ,'Nancy','Nancy');
+INSERT INTO aeroport VALUES (5 ,'Paris Orly','Paris');
+INSERT INTO aeroport VALUES (6 ,'Paris Roissy','Paris');
+INSERT INTO aeroport VALUES (7 ,'Strasbourg','Strasbourg');
+INSERT INTO aeroport VALUES (8 ,'Toulouse','Toulouse');

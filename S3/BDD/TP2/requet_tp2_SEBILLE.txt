@@ -20,6 +20,86 @@ commandes :
 
 ssh info
 psql -l -> mot de passe SeFl
-
+\c avions
 
 1-
+
+CREATE TABLE avion (
+IdAvion int,
+TypeAvion varchar,
+CapaAvion int,
+LocAvion varchar,
+PRIMARY KEY (IdAvion)
+);
+
+CREATE TABLE pilote (
+IdPilote int,
+NomPilote varchar,
+VillePilote varchar,
+PRIMARY KEY (IdPilote)
+);
+
+CREATE TABLE vol (
+IdVol int,
+IdPilote int,
+IdAvion int,
+DepVol varchar,
+ArrVol varchar,
+HeureDepVol varchar,
+HeureArrVol varchar,
+PRIMARY KEY (IdVol),
+FOREIGN KEY (IdPilote) REFERENCES pilote (IdPilote),
+FOREIGN KEY (IdAvion) REFERENCES avion (IdAvion)
+);
+
+3)
+	a- select nompilote from pilote natural join  vol where depvol = 'Paris Orly';
+
+	b- select idavion, locavion from avion where locavion <> 'Paris Orly' and capaavion > 200;
+
+	c- select nompilote from pilote natural join avion natural join vol where typeavion like 'ATR%';
+	ou select nompilote from pilote where idpilote = any(select idpilote from vol where idavion = any(select idavion from avion where typeavion like 'ATR%'));
+
+	d- select arrvol from pilote natural join avion natural join vol where depvol like 'Paris%' and capaavion > any(select capaavion from avion where typeavion = 'A380');
+
+	e- select distinct typeavion from avion where capaavion > all(select capaavion from avion where locavion like 'Marseille%');
+
+	f- select nompilote from pilote where idpilote <> all(select idpilote from vol);
+	ou select nompilote from pilote left outer join vol using (idpilote) where idvol is null;
+	ou //pas fini;
+
+2-
+
+CREATE TABLE type (
+IdType int,
+NomType varchar,
+nb_place int,
+PRIMARY KEY (IdType)
+);
+
+CREATE TABLE licence_type (
+NomLicence varchar,
+IdTypeLicence int,
+PRIMARY KEY (NomLicence, IdTypeLicence),
+FOREIGN KEY (IdTypeLicence) REFERENCES type (IdType)
+);
+
+CREATE TABLE licence_pilote (
+IdPilote int,
+NomLicence varchar,
+PRIMARY KEY (IdPilote, NomLicence)
+);
+
+CREATE TABLE aeroport (
+IdAeroport int,
+NomAeroport varchar,
+NomVille varchar,
+PRIMARY KEY (IdType)
+);
+
+alter table vol add column IdAeroportDep int references aeroport;
+alter table vol add column IdAeroportArr int references aeroport;
+alter table avion add column IdAeroportAvion int references aeroport;
+alter table avion add column IdTypeAvion int references type;
+
+update avion set nomavion = typeavion;

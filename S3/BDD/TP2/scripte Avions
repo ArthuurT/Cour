@@ -1,0 +1,43 @@
+
+
+INSERT INTO vol VALUES (1000,10,101,'Paris Orly','Toulouse','10:05','12:53');
+INSERT INTO vol VALUES (1001,10,101,'Toulouse','Paris Orly','14:25','17:07');
+INSERT INTO vol VALUES (1002,11,102,'Paris Orly','Marseille Marignane','08:35','09:30');
+INSERT INTO vol VALUES (1003,11,103,'Marseille Marignane','Strasbourg','13:15','14:48');
+INSERT INTO vol VALUES (1004,16,104,'Paris Orly','Toulouse','18:24','20:06');
+INSERT INTO vol VALUES (1005,13,105,'Toulouse','Nancy','11:05','13:53');
+INSERT INTO vol VALUES (1006,14,110,'Avignon','Paris Orly','07:35','08:22');
+INSERT INTO vol VALUES (1007,15,108,'Paris Roissy','Nancy','07:05','07:55');
+INSERT INTO vol VALUES (1008,13,123,'Lyon','Avignon','06:55','07:35');
+INSERT INTO vol VALUES (1009,17,100,'Paris Orly','Lyon','10:05','10:43');
+INSERT INTO vol VALUES (1010,15,100,'Lyon','Paris Orly','15:18','16:03');
+INSERT INTO vol VALUES (1011,12,112,'Lyon','Avignon','19:20','20:05');
+INSERT INTO vol VALUES (1012,13,112,'Paris Roissy','Lyon','17:15','18:02');
+INSERT INTO vol VALUES (1013,12,112,'Avignon','Paris Roissy','21:45','22:38');
+
+
+INSERT INTO avion VALUES (123,'A300',300,'Paris Orly');
+INSERT INTO avion VALUES (102,'A320',320,'Paris Orly');
+INSERT INTO avion VALUES (103,'A300',300,'Marseille Marignane');
+INSERT INTO avion VALUES (104,'A320',320,'Paris Roissy');
+INSERT INTO avion VALUES (105,'A300',300,'Toulouse');
+INSERT INTO avion VALUES (106,'B747',248,'Paris Orly');
+INSERT INTO avion VALUES (107,'B747',248,'Bordeaux');
+INSERT INTO avion VALUES (108,'ATR44',144,'Avignon');
+INSERT INTO avion VALUES (109,'ATR44',144,'Nancy');
+INSERT INTO avion VALUES (110,'Foker100',100,'Paris Orly');
+INSERT INTO avion VALUES (111,'Foker100',100,'Avignon');
+INSERT INTO avion VALUES (112,'B747',248,'Avignon');
+INSERT INTO avion VALUES (100,'A300',300,'Marseille Marignane');
+INSERT INTO avion VALUES (101,'A310',310,'Strasbourg');
+
+
+INSERT INTO pilote VALUES (10,'Pierre','Paris');
+INSERT INTO pilote VALUES (11,'Paul','Paris');
+INSERT INTO pilote VALUES (12,'Jacques','Paris');
+INSERT INTO pilote VALUES (13,'Fernande','Rennes');
+INSERT INTO pilote VALUES (15,'Marie','Toulouse');
+INSERT INTO pilote VALUES (16,'Philippe','Tavel');
+INSERT INTO pilote VALUES (17,'Frederic','Nancy');
+INSERT INTO pilote VALUES (14,'Cecile','Robion');
+INSERT INTO pilote VALUES (18,'Jean','Lyon');

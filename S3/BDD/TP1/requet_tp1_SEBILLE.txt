@@ -8,12 +8,12 @@ psql -U pour mettre un nom d'utilisateur different
 dans la base :
 
 \dt		Afficher la liste des tables de la base de données (bdd)
-\dt+		Afficher la liste des tables de la bdd avec plus d’informations 
+\dt+		Afficher la liste des tables de la bdd avec plus d’informations
 \d nom_table	Afficher la description d’une table
 \h select	Afficher l’aide sur la commande SQL SELECT
 \i nom_fic	Exécution des commandes SQL qui se trouvent dans lefichier texte
 \? liste toute les commande \
-ex : \c pour aller a une autre base de donné sans quitter l'environement; 
+ex : \c pour aller a une autre base de donné sans quitter l'environement;
 
 
 commandes :
@@ -102,8 +102,3 @@ UPDATE dep SET directeur = 'King' WHERE iddep = 40;
 SELECT idEmp,nEmp,idDep FROM emp WHERE metier = 'MANAGER';
 
 SELECT metier FROM (SELECT idmgr,iddep FROM emp INTERSECT SELECT idemp,iddep,metier FROM emp;
-
-
-
-
- 
