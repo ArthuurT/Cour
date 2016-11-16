@@ -1,0 +1,18 @@
+creer une branche : git branch nom_de_la_branche
+et
+se placer dedans : git checkout nom_de_la_branche
+
+ou faire
+git checkout -b nom_de_la_branche
+
+
+apres avoir fait des modif pusher comme ca:
+git push --set-upstream origin test_branche
+
+
+pour apliquer les modif d'une branche vers la branche master:
+git checkout master
+git merge nom_de_la_branche
+
+pour suprimer une branche:
+git branch -d nom_de_la_branche
