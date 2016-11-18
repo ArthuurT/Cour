@@ -19,3 +19,14 @@ git branch -d nom_de_la_branche
 
 apres la forcer a poucher avec :
 git push origin --delete nom_de_la_branche
+
+pour recuperer sur ton ordi les branche distante faire :
+git checkout -—track origin/nom_de_la_branche
+
+pour suivre sur github un dépôt local
+
+git remote add origin https://github.com/username/nom_du_depot.git
+//Crée un remote nommé "origin" pointant votre dépôt GitHub
+
+git push origin master
+//Envoie vos commits dans la branche "master" sur GitHub
