@@ -35,8 +35,8 @@ INSERT INTO type VALUES (6, 'ATR44', 144);
 INSERT INTO type VALUES (7, 'Foker100', 100);
 
 INSERT INTO aeroport VALUES (1 ,'Avignon', 'Avignon');
-INSERT INTO aeroport VALUES (2 ,'Bordeaux', 'Bordeaux);
-INSERT INTO aeroport VALUES (3 ,'Marseille Marignane','Marseille);
+INSERT INTO aeroport VALUES (2 ,'Bordeaux', 'Bordeaux');
+INSERT INTO aeroport VALUES (3 ,'Marseille Marignane','Marseille');
 INSERT INTO aeroport VALUES (4 ,'Nancy','Nancy');
 INSERT INTO aeroport VALUES (5 ,'Paris Orly','Paris');
 INSERT INTO aeroport VALUES (6 ,'Paris Roissy','Paris');

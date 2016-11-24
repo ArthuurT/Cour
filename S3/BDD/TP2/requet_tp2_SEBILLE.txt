@@ -14,7 +14,7 @@ dans la base :
 \i nom_fic	Exécution des commandes SQL qui se trouvent dans lefichier texte
 \? liste toute les commande \
 ex : \c pour aller a une autre base de donné sans quitter l'environement;
-
+\d nom_de_la_table affiche les lien de la table (clé)
 
 commandes :
 
@@ -87,7 +87,8 @@ FOREIGN KEY (IdTypeLicence) REFERENCES type (IdType)
 CREATE TABLE licence_pilote (
 IdPilote int,
 NomLicence varchar,
-PRIMARY KEY (IdPilote, NomLicence)
+PRIMARY KEY (IdPilote),
+FOREIGN KEY (IdPilote) REFERENCES pilote (IdPilote)
 );
 
 CREATE TABLE aeroport (
@@ -102,4 +103,18 @@ alter table vol add column IdAeroportArr int references aeroport;
 alter table avion add column IdAeroportAvion int references aeroport;
 alter table avion add column IdTypeAvion int references type;
 
-update avion set nomavion = typeavion;
+/*update avion set nomavion = typeavion;*/
+
+update avion set idaeroportavion = (select idaeroport from aeroport where avion.locavion = nomaeroport);
+update avion set idtypeavion = (select idtype from type where type.nomtype = avion.typeavion);
+update vol set idaeroportdep = (select idaeroport from aeroport where vol.depvol = aeroport.nomaeroport);update vol set idaeroportdep = (select idaeroport from aeroport where vol.depvol = aeroport.nomaeroport);
+update vol set idaeroportarr = (select idaeroport from aeroport where vol.arrvol = aeroport.nomaeroport);
+
+ALTER TABLE avion drop COLUMN capaavion;
+ALTER TABLE avion drop COLUMN typeavion;
+ALTER TABLE avion drop COLUMN locavion;
+
+ALTER TABLE pilote ADD COLUMN SAL int DEFAULT 5000;
+update pilote set sal = 7500 where idpilote = any(select idpilote from vol);
+
+select p1.nompilote ||' - '|| p2.nompilote as pair from pilote as p1 join pilote as p2 on p1.villepilote = p2.villepilote and p1.nompilote < p2.nompilote;
