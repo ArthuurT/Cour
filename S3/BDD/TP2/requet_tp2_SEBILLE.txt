@@ -118,3 +118,4 @@ ALTER TABLE pilote ADD COLUMN SAL int DEFAULT 5000;
 update pilote set sal = 7500 where idpilote = any(select idpilote from vol);
 
 select p1.nompilote ||' - '|| p2.nompilote as pair from pilote as p1 join pilote as p2 on p1.villepilote = p2.villepilote and p1.nompilote < p2.nompilote;
+select idvol,idpilote FROM vol NATURAL JOIN avion where (idpilote,idtypeavion) not in (select idpilote,idtypelicence from licence_pilote natural join licence_type);
