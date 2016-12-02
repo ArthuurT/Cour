@@ -21,7 +21,7 @@ apres la forcer a poucher avec :
 git push origin --delete nom_de_la_branche
 
 pour recuperer sur ton ordi les branche distante faire :
-git checkout -—track origin/nom_de_la_branche
+git checkout --track origin/nom_de_la_branche
 
 pour suivre sur github un dépôt local
 
