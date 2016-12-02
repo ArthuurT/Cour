@@ -1,0 +1,135 @@
+		TP1 Bases de Donnees
+
+
+psql -d pour mettre le nom de la base
+psql -U pour mettre un nom d'utilisateur different
+
+
+dans la base :
+
+\dt		Afficher la liste des tables de la base de données (bdd)
+\dt+		Afficher la liste des tables de la bdd avec plus d’informations
+\d nom_table	Afficher la description d’une table
+\h select	Afficher l’aide sur la commande SQL SELECT
+\i nom_fic	Exécution des commandes SQL qui se trouvent dans lefichier texte
+\? liste toute les commande \
+ex : \c pour aller a une autre base de donné sans quitter l'environement;
+\d nom_de_la_table affiche les lien de la table (clé)
+
+commandes :
+
+ssh info
+psql -l -> mot de passe SeFl
+\c
+
+
+CREATE TABLE ELEVE (
+Id_eleve int,
+Nom_eleve varchar,
+Prenom_eleve varchar,
+date_arr_eleve date,
+PRIMARY KEY (Id_eleve)
+);
+
+CREATE TABLE SCOLARITE (
+Id_classe int,
+annee int,
+id_eleve int,
+moy float,
+PRIMARY KEY (Id_eleve, annee),
+FOREIGN KEY (Id_eleve) REFERENCES ELEVE (Id_eleve),
+FOREIGN KEY (Id_classe) REFERENCES CLASSE (Id_classe)
+);
+
+CREATE TABLE CLASSE (
+Id_classe int,
+Nom_classe varchar,
+nom_batiment varchar,
+PRIMARY KEY (Id_classe)
+);
+
+CREATE TABLE PROF (
+Id_prof int,
+Nom_prof varchar,
+Prenom_prof varchar,
+Date_arr_prof date,
+PRIMARY KEY (Id_prof)
+);
+
+CREATE TABLE MATIERE (
+Id_matiere int,
+Nom_matiere varchar,
+Description text,
+PRIMARY KEY (Id_matiere)
+);
+
+CREATE TABLE ENSEIGNEMENT (
+Id_classe int,
+Id_prof int,
+annee int,
+Id_metiere int,
+PRIMARY KEY (Id_classe, Id_prof, annee),
+FOREIGN KEY (Id_classe) REFERENCES CLASSE (Id_classe),
+FOREIGN KEY (Id_prof) REFERENCES PROF (Id_prof)
+);
+
+INSERT INTO MATIERE VALUES (1,'C','C est un langage de programmation impératif et généraliste. Inventé au début des années 1970 pour réécrire UNIX, C est devenu un des langages les plus utilisés. De nombreux langages plus modernes comme C++.');
+update matiere set description = 'le langage c pour les nulls' where id_matiere = 1;
+INSERT INTO MATIERE VALUES (2,'BDD','base de données pour les incompétants');
+INSERT INTO MATIERE VALUES (3,'FDD','fouille de données pour les L1SPI');
+INSERT INTO PROF VALUES (1,'Barrault','Loïc','September 1, 2009');
+INSERT INTO PROF VALUES (2,'Camelin','Nathalie','September 1, 2011');
+INSERT INTO CLASSE VALUES (1,'L2','IC2');
+INSERT INTO CLASSE VALUES (2,'M2','IC2');
+INSERT INTO enseignement VALUES (1,2,2011,2);
+INSERT INTO enseignement VALUES (2,2,2012,3);
+INSERT INTO enseignement VALUES (1,1,2010,1);
+INSERT INTO eleve VALUES (1,'Pierre','Willy','September 1, 2015');
+INSERT INTO eleve VALUES (2,'Paul','Wood','September 1, 2015');
+INSERT INTO eleve VALUES (3,'Jacques','Pecker','September 1, 2015');
+INSERT INTO eleve VALUES (4,'Michel','jesus','September 1, 2012');
+INSERT INTO eleve VALUES (5,'Del','marie','September 1, 2012');
+INSERT INTO eleve VALUES (6,'Peche','joseph','September 1, 2012');
+INSERT INTO eleve VALUES (7,'Harry','Granger','September 1, 2012');
+INSERT INTO eleve VALUES (8,'Hermione','Potter','September 1, 2012');
+INSERT INTO scolarite VALUES (1,2016,1,16);
+INSERT INTO scolarite VALUES (1,2016,2,4);
+INSERT INTO scolarite VALUES (1,2016,3,10);
+INSERT INTO scolarite VALUES (1,2013,4,13);
+INSERT INTO scolarite VALUES (1,2013,5,14);
+INSERT INTO scolarite VALUES (1,2013,6,12);
+INSERT INTO scolarite VALUES (1,2013,7,13);
+INSERT INTO scolarite VALUES (2,2016,4,3);
+INSERT INTO scolarite VALUES (2,2016,5,2);
+INSERT INTO scolarite VALUES (2,2016,6,1);
+INSERT INTO scolarite VALUES (2,2016,7,14);
+
+question:
+
+	a-	select nom_classe from classe where id_classe = (select id_classe from scolarite where id_eleve = (select id_eleve from eleve where nom_eleve like 'Pierre') and annee = 2016);
+
+	b-	SELECT AVG (moy) as moyenne FROM scolarite WHERE id_classe = 1 and annee = 2016; ->10
+
+	c-	SELECT COUNT(*) as Nombre_Matiere_2016 from matiere where id_matiere = any(select Id_metiere from ENSEIGNEMENT where id_classe = any(select distinct id_classe from scolarite where annee = 2016));
+
+	d-	SELECT COUNT(*) as Nombre_Matiere_2016_Camelin from matiere where id_matiere = any(select Id_metiere from ENSEIGNEMENT where id_classe = any(select distinct id_classe from scolarite where annee = 2016) and id_prof = 2);
+
+	e-
+
+	f-
+
+	g-	select current_time;
+
+	h-
+
+	i-
+
+	j-
+
+	k-
+
+	l-
+
+	m-
+
+	n-
