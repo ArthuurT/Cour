@@ -122,7 +122,7 @@ question:
 
 	h-
 
-	i-
+	i-	select nom_prof ||' - '|| prenom_prof as plus_encien_prof from prof where date_arr_prof <= all(select date_arr_prof from prof);
 
 	j-
 
