@@ -1,0 +1,75 @@
+		TP1 Bases de Donnees
+
+
+psql -d pour mettre le nom de la base
+psql -U pour mettre un nom d'utilisateur different
+
+
+dans la base :
+
+\dt		Afficher la liste des tables de la base de données (bdd)
+\dt+		Afficher la liste des tables de la bdd avec plus d’informations
+\d nom_table	Afficher la description d’une table
+\h select	Afficher l’aide sur la commande SQL SELECT
+\i nom_fic	Exécution des commandes SQL qui se trouvent dans lefichier texte
+\? liste toute les commande \
+ex : \c pour aller a une autre base de donné sans quitter l'environement;
+\d nom_de_la_table affiche les lien de la table (clé)
+
+commandes :
+
+ssh info
+psql -l -> mot de passe SeFl
+\c
+
+
+CREATE TABLE chauffeur (
+           id_chauffeur BIGINT NOT NULL,
+           nom varchar,
+           prenom varchar,
+           adr varchar,
+           id_station_c BIGINT NOT NULL,
+           PRIMARY KEY (id_chauffeur),
+           FOREIGN KEY (id_station_c) REFERENCES station (id_station)
+           );
+
+CREATE TABLE permis (
+						id_chauffeur BIGINT NOT NULL,
+					  cat_perm_c varchar,
+					  PRIMARY KEY (id_chauffeur, cat_perm_c),
+					  FOREIGN KEY (id_chauffeur) REFERENCES chauffeur (id_chauffeur)
+					  );
+
+
+question:
+
+	3-	alter table station add column nom_zone_s VARCHAR(20);
+			alter table position add column nom_zone_p VARCHAR(20);
+
+			update station set nom_zone_s = (select nom_zone from zone where zone.id_zone = station.id_zone);
+			update position set nom_zone_p = (select nom_zone from zone where zone.id_zone = position.id_zone);
+			ALTER TABLE station drop COLUMN id_zone;
+			ALTER TABLE position drop COLUMN id_zone;
+
+			DROP TABLE IF EXISTS zone;
+
+	4-	alter table plein add column type_carbu VARCHAR(10);
+			update plein set type_carbu = (select type_carbu from (modele natural join vehicule) as modele_vehicule where modele_vehicule.id_vehicule = plein.id_vehicule);
+
+	5-	SELECT COUNT(*) from entretien where date_e <= '31-12-14' and date_e >= '1-1-14';
+
+	6-	select id_chauffeur,nom,prenom from chauffeur where id_station_c = any(select id_station from station where nom_station = 'Geonosis');
+
+	7-	select distinct id_vehicule from plein where id_vehicule = any(select id_vehicule from modele natural join vehicule where nom_modele = 'cargo YT-1300') and date_p > '11-08-2015';
+
+	8-	select ((sum(qte_carbu)*100)/sum(nb_km)) from plein where id_vehicule = any(select id_vehicule from vehicule where id_modele = any(select id_modele from modele where nom_modele = 'voilier solaire geonosien'));
+
+	9-
+
+	10-	select nom_zone2 from distance where nom_zone1 = any(select nom_zone_s from station where nom_station = 'Coruscant') and parsec <= 10 and parsec > 0;
+
+	11-	select nom_vehicule, nom_zone_p, nom, nb_pers from position natural join chauffeur natural join vehicule natural join modele where nom_zone_p is not null;
+
+	12-	select distinct id_chauffeur from position where id_chauffeur not in (select id_chauffeur from position where th = '2' and date = '11-12-2015');
+
+			select id_chauffeur from position where th = 2 and date = '11-12-2014'
