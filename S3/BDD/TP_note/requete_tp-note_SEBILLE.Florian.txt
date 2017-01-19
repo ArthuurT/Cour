@@ -1,0 +1,7 @@
+
+  TP Noté SEBILLE Florian
+
+
+ssh info
+psql -l
+psql -d

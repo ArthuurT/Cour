@@ -1,0 +1,111 @@
+DROP TABLE IF EXISTS entrainement;
+DROP TABLE IF EXISTS seance;
+DROP TABLE IF EXISTS compo_serie;
+DROP TABLE IF EXISTS serie;
+DROP TABLE IF EXISTS cdrom;
+DROP TABLE IF EXISTS passage;
+DROP TABLE IF EXISTS editeur;
+DROP TABLE IF EXISTS question;
+DROP TABLE IF EXISTS eleve;
+DROP TABLE IF EXISTS exam;
+
+
+CREATE TABLE exam (
+    id_exam SERIAL PRIMARY KEY,
+    date_exam date);
+
+INSERT INTO exam VALUES
+(DEFAULT,'14-10-2016'),(DEFAULT,'25-10-2016'),(DEFAULT,'06-11-2016'),(DEFAULT,'17-11-2016'),(DEFAULT,'28-11-2016'),(DEFAULT,'07-12-2016'), (DEFAULT,'15-12-2016');
+
+CREATE TABLE eleve (
+    id_eleve BIGINT PRIMARY KEY,
+    nom_e VARCHAR(30) NOT NULL,
+    prenom_e VARCHAR(30) NOT NULL,
+    adr_e VARCHAR(50),
+    date_naiss_e DATE);
+
+INSERT INTO eleve VALUES
+(1,'JONES','Bernard','Laval','12-12-1998'),(2,'SMITH','Arthur','Le Mans','02-10-1998'),(3,'WESTON','Alice','Nantes','11-06-1996'),(4,'BRYAN','Marthe','Tours','21-03-1997'),(5,'SAM','Philippe','Saumur','23-11-1997'),(6,'OBAMA','Claire','Paris','30-08-1997');
+
+CREATE TABLE question (
+    id_question BIGINT NOT NULL,
+    intitule VARCHAR(30),
+    reponse VARCHAR(15),
+    difficulte VARCHAR(15),
+    thème VARCHAR(15),
+    CONSTRAINT PK_question PRIMARY KEY (id_question));
+
+INSERT INTO question VALUES
+(1,'priorité à droite','a','moyen'),(2,'feux de positions','b','facile'),(3,'ilot directionnel','c','difficile'),(4,'brouillard','b','moyen'),(5,'distance sécurité','a','facile'),(6,'piste cyclable','c','difficile'),(7,'stop','a','facile'),(8,'cédez le passage','b','facile'),(9,'dépassement','d','difficile'),(10,'limitation vitesse','b','moyen'),(11,'demi-tour','a','facile'),(12,'bande arret urgence','c','moyen');
+
+CREATE TABLE editeur (
+    id_editeur SERIAL PRIMARY KEY,
+    nom_editeur VARCHAR(30));
+
+INSERT INTO editeur VALUES
+(DEFAULT, 'Gaia'),(DEFAULT,'Solen');
+
+CREATE TABLE passage (
+    id_eleve BIGINT NOT NULL REFERENCES eleve,
+    id_exam BIGINT NOT NULL REFERENCES exam,
+    nb_erreurs int);
+
+INSERT INTO passage VALUES
+(1,1,6),(2,1,6),(2,2,9),(2,4,4),(3,3,12),(3,6,7),(3,7,2),(4,2,0),(5,4,2),(6,6,7);
+
+INSERT INTO passage VALUES
+(5,5,5);
+
+CREATE TABLE cdrom (
+    id_cdrom BIGINT PRIMARY KEY,
+    id_editeur BIGINT REFERENCES editeur);
+
+INSERT INTO cdrom VALUES
+(1,1),(2,1),(3,2),(4,1),(5,2),(6,1);
+
+CREATE TABLE serie (
+           id_cdrom int,
+           id_serie int,
+           commentaire varchar,
+           PRIMARY KEY (id_cdrom, id_serie),
+           FOREIGN KEY (id_cdrom) REFERENCES cdrom (id_cdrom)
+           );
+
+INSERT INTO serie VALUES
+(1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(2,1),(2,2),(2,3),(2,4),(2,5),(2,6);
+
+CREATE TABLE compo_serie (
+           id_cdrom int,
+           id_serie int,
+           num_ordre int,
+           id_question int,
+           PRIMARY KEY (id_cdrom, id_serie, num_ordre),
+           FOREIGN KEY (id_cdrom) REFERENCES cdrom (id_cdrom),
+           FOREIGN KEY (id_serie) REFERENCES serie (id_serie),
+           FOREIGN KEY (id_question) REFERENCES question (id_question)
+           );
+
+INSERT INTO compo_serie VALUES
+(1,1,1,3),(1,1,2,5),(1,1,3,6),(1,1,4,8),(1,1,5,12),(1,1,6,10),
+(1,2,1,2),(1,2,2,3),(1,2,3,8),(1,2,4,9),(1,2,5,11),(1,2,6,10),
+(2,3,1,6),(2,3,2,4),(2,3,3,1),(2,3,4,7),(2,3,5,2),(2,3,6,12);
+
+
+CREATE TABLE seance (
+    id_seance BIGINT PRIMARY KEY,
+    date_seance DATE,
+    heure_seance TIME,
+    id_cdrom BIGINT NOT NULL,
+    id_serie BIGINT NOT NULL,
+    CONSTRAINT FK_seance FOREIGN KEY (id_cdrom, id_serie) REFERENCES serie);
+
+INSERT INTO seance VALUES
+(1,'13-10-2016','18:30:00',1,1),(2,'24-10-2016','18:30:00',2,3), (3,'05-11-2016','18:30:00',1,2);
+
+CREATE TABLE entrainement (
+    id_eleve BIGINT NOT NULL REFERENCES eleve,
+    id_seance BIGINT REFERENCES seance,
+    nb_fautes INT) ;
+
+INSERT INTO entrainement VALUES
+(1,1,4),(1,2,3),(2,1,12),(3,2,9),(4,3,7),(5,3,2),(6,2,4);

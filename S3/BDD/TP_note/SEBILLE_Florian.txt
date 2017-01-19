@@ -1,0 +1,56 @@
+
+  TP Noté SEBILLE Florian
+
+
+ssh info
+psql -l
+psql -d
+
+
+CREATE TABLE serie (
+           id_cdrom int,
+           id_serie int,
+           commentaire varchar,
+           PRIMARY KEY (id_cdrom, id_serie),
+           FOREIGN KEY (id_cdrom) REFERENCES cdrom (id_cdrom)
+           );
+
+CREATE TABLE compo_serie (
+           id_cdrom int,
+           id_serie int,
+           num_ordre int,
+           id_question int,
+           PRIMARY KEY (id_cdrom, id_serie, num_ordre),
+           FOREIGN KEY (id_cdrom) REFERENCES cdrom (id_cdrom),
+           FOREIGN KEY (id_serie) REFERENCES serie (id_serie),
+           FOREIGN KEY (id_question) REFERENCES question (id_question)
+           );
+
+
+  3-  alter table cdrom add column nom_editeur VARCHAR(20);
+      update cdrom set nom_editeur = (select nom_editeur from editeur where editeur.id_editeur = cdrom.id_editeur);
+      ALTER TABLE cdrom drop COLUMN id_editeur;
+      DROP TABLE IF EXISTS editeur;
+
+  4-  alter table exam add column pourcentage_reussite int;
+      update exam set pourcentage_reussite = (select ((select count(nb_erreurs) from passage where exam.id_exam = passage.id_exam and nb_erreurs <= 5)*100/(select count(*) from passage where exam.id_exam = passage.id_exam)));
+
+  5-  select nom_e, prenom_e from eleve where id_eleve = any(select id_eleve from passage where nb_erreurs <= 5);
+
+  6-  select (sum(nb_erreurs)/count(*)) from passage where id_eleve = any(select id_eleve from eleve where nom_e = 'WESTON' and prenom_e = 'Alice');
+
+  7-  select distinct id_cdrom, id_serie from compo_serie where id_question = any(select id_question from question where difficulte = 'difficile');
+
+  8-  select nb_fautes from entrainement where id_seance = any(select id_seance from seance where id_serie = any(select id_serie from compo_serie where id_question = any(select id_question from question where intitule = 'limitation vitesse'))) and nb_fautes <= all(select nb_fautes from entrainement where id_seance = any(select id_seance from seance where id_serie = any(select id_serie from compo_serie where id_question = any(select id_question from question where intitule = 'limitation vitesse'))));
+
+  9-  select count(id_eleve) from passage natural join exam where nb_erreurs <=5 and date_exam > current_date - 30 and id_eleve = any(select id_eleve from eleve where nom_e like '_M%');
+
+  10- select intitule from question where id_question = any(select id_question from compo_serie where id_serie = any(select id_serie from seance where id_seance = any(select id_seance from entrainement where id_eleve = any(select id_eleve from eleve where nom_e = 'JONES' and prenom_e = 'Bernard'))));
+
+  11- select nom_e ||' '|| prenom_e as Candidats_potentiels from eleve where id_eleve = any(select id_eleve from entrainement where id_seance = any(select id_seance from seance where date_seance >= all(select date_seance from seance)) and nb_fautes <= 5);
+
+  12- INSERT INTO passage VALUES (6,7,NULL);
+
+  13- update passage set nb_erreurs = 2 where id_eleve = 6 and id_exam = 7;
+
+  14- select id_eleve from eleve where id_eleve not in (select id_eleve from passage where nb_erreurs <= 5) and ?;
