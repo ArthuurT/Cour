@@ -50,25 +50,25 @@ let rec union = fun a b -> if a = vide then b
 
 let rec cardinale = fonction vide -> 0
                             | cons (tete,reste) -> 1 + cardinale reste;;
-                            
+
 let rec eliminedouble = function vide -> vide
                                  | cons (tete,reste) -> if appartient tete reste then eliminedouble reste
                                                         else cons (tete,eliminedouble reste);;
-     
+
 let rec intversfloat = function vide -> vide
                                 | cons (tete,reste) -> cons (floatofint(tete),intversfloat(reste));;
-                                
+
 let rec floatversint = function vide -> vide
                                 | cons (tete,reste) -> cons (intoffloat(tete),floatversint(reste));;
-                                
+
 let rec fonction_ensemble = function _ vide -> vide
                                 | g (cons (tete,reste)) -> cons (g(tete),fonction_ensemble(reste));;
-                                
+
 let rec lignes = function canal ->
           try let une_ligne = input_line canal in
                 cons(une_ligne, lignes canal)
           with End_of_file -> vide;;
-          
+
 let lire = function nom ->
        let canal = open_in nom in
           let resu = lignes canal in
