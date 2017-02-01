@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <curses.h>
 #include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+#include <ncurses.h>
 
 
 void init(int *V,int *debut,int *N){ //demande a l'utilisateur les condition initiales pour le codage
@@ -136,7 +140,7 @@ void DecodeHGBN(int table_signal[], int table_Data_decoder[], int *V, int debut,
 
 }
 
-int main () {
+int main() {
 
   int table_Data [23] = {1,0,0,1,0,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,0,0};
   int table_P [23] = {0};
