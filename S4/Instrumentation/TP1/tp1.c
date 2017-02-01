@@ -126,7 +126,13 @@ void creation_signal(int table_P[],int table_N[],int table_signal[]){  // crée 
     table_signal[i] = table_P[i] - (1 * table_N[i]);
   }
 }
-void DecodeHGBN(int table_P[], int table_N[], int table_signal[]){
+void DecodeHGBN(int table_signal[], int table_Data_decoder[], int *V, int debut, int n){
+  /*int i;
+
+  for(i = 0; i < 23; i++){
+      if(table_signal[i] )
+  }*/
+
 
 }
 
@@ -136,6 +142,7 @@ int main () {
   int table_P [23] = {0};
   int table_N [23] = {0};
   int table_signal [23] = {0};
+  int table_Data_decoder [23] = {0};
 
   int v = 0;
   int n = 0;
@@ -161,7 +168,7 @@ int main () {
       case 2:  HDBN(table_Data, table_P, table_N, &v, debut, n);
       case 3:  creation_signal(table_P,table_N, table_signal); break;
       case 4:  Affichage(table_P,table_N,table_signal); break;
-      case 5:  DecodeHGBN(table_P,table_N,table_signal); break;
+      case 5:  DecodeHGBN(table_signal, table_Data_decoder, &v, debut, n); break;
       case 6:  reset(&v,v_base); break;
       case 7:  break;
       default: printf("Erreur: votre choix doit etre compris entre 1 et 7\n");
